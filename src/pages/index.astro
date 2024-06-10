@@ -1,69 +1,190 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+// Import the <Image /> component
+import { Image } from "astro:assets"
+// Import a reference to the image itself
+import whatIdoImage from "../assets/whatido.jpg"
 
+import topImage from '../assets/heronew.png'; 
+import Testimonial from '../components/Testimonial.astro';
+
+const title = 'Home - Hayden Tomas - Website Developer';
+const description = 'I develop websites and web applications using modern technologies like React, Next.js, and Astro.';
+const permalink = `${Astro.url.href}`;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>Hi 👋 </h1>
-			<p>
-				Welcome to my <a href="https://astro.build/">Astro 🚀</a> blog starter template. This
-				template was designed to be a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with <code>Astro</code>.
-			</p>
-			<p>
-				This template comes with a few integrations already like <code>Tailwind CSS</code>, <code>Markdown X (MDX)</code>  support and sitemap and rss generation. 
-			</p>
+<BaseLayout title={title} description={description} permalink={permalink}>
+	<section class="relative w-full ">
+  
+		<div class=" mx-auto items-center flex lg:flex-row flex-col py-10 ">
+			<div class="w-full lg:w-1/2">
+			  
+				<h1 class="sm:text-7xl">A Front-End Dev with a passion for speed and accessibility.</h1>
+			  
+				<p class="mt-8">If your business needs a conversion-focused website that loads fast and is accessible to people of all abilities, I am the guy you need to speak to.</p>
+			 
+			 <Button aria="Start your project" href="/contact">Start your project</Button>
+			   
+			</div>
+			<div class="w-full sm:w-3/4 lg:w-1/2 ">
+		 
+				<Image loading="eager" src={topImage}
+		  widths={[240, 540, 720, topImage.width]}
+		  sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${topImage.width}px`}
+		  alt="Hayden Tomas = Front end website developer" class=""
+		/>
+			</div>
+		</div>
+	</section>
+
+	<Testimonial Content="Hayden is a highly creative individual and I would strongly recommend him to any company/individual who wants a web site which is up-to-the-minute and personalised. His ideas and concepts are a credit to him. He created a FANTASTIC new web site for my business. His after-care and customer service are second-to-none. Great to work with and extremely reliable." Name="Zoe Varzi - Director - The Full Wax Ltd"></Testimonial>
+  <!-- Approach -->
+  <div class="">
+	<!-- Approach -->
+	<div class=" px-4 xl:px-0 py-10 lg:pt-20 lg:pb-20 mx-auto">
+	  <!-- Title -->
+	  <div class=" mb-10 lg:mb-14">
+		<h2 class="text-2xl md:text-4xl">How I work</h2>
+		<p>I am a hybrid developer. This means I am capable of designing, developing and taking care of your online marketing strategy.</p>
+		<p>I understand what it takes to make a website successful. I have over 10 years experience with a marketing agency based in High Wycombe and have been working at the same place since the start of my career.</p>
+		  <p>I design and develop everything from scratch. That means I like to get messy with code and develop websites that are lean and work effortlessly.</p>
+  
+	  </div>
+	  <!-- End Title -->
+  
+	  <!-- Grid -->
+	  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center">
+		<div class="aspect-w-16 aspect-h-9 lg:aspect-none">
+		
+  
+  
+  
+		  <Image loading="lazy" src={whatIdoImage}
+		  widths={[240, 540, 720, whatIdoImage.width]}
+		  sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${whatIdoImage.width}px`}
+		  alt="Hayden Tomas - What I do" class="w-full object-cover rounded-xl"
+		/>
+		</div>
+		<!-- End Col -->
+  
+		<!-- Timeline -->
+		<div>
+		  <!-- Heading -->
+		  
+		  <div class="mb-4">
 			
-
-
-<p>This template includes:</p>
-
-<ul>
-
-<li><strong>Blazing fast</strong> - Amazing performance scores out of the box</li>
-
-<li><strong>Ultra low dependency</strong> - Built on Astro for minimal bloat</li>  
-
-<li><strong>Simple code</strong> - No complex pathways or millions of components</li>
-
-<li><strong>Simple configuration</strong> - Customize as needed with easy config</li>
-
-<li><strong>Basic functionality included</strong> - Built in RSS, sitemap, SEO, and more</li>
-
-<li><strong>Easy to customize</strong> - Refactor and modify code as required</li>
-
-<li><strong>Latest Astro</strong> - Upgraded to Astro 4.0.9</li>
-
-<li><strong>Tailwind CSS</strong> - Or use your own CSS framework</li>
-
-<li><strong>Image optimization</strong> - Leverage Astro/Image for best practices</li>
-
-<li><strong>RSS/Sitemap</strong> - Out of the box with Astro/rss and Astro/sitemap</li>  
-
-<li><strong>Free!</strong> - 100% free to use and modify under the MIT licence</li>
-
-</ul>
-
-<p>If you find this template useful, please support continued development by <a href="https://buymeacoffee.com/sureshkhirwadkar">buying me a coffee ☕️</a>.</p>
-
+			<h2 class="text-2xl md:text-4xl">My process</h2>
+		  </div>
+		  <!-- End Heading -->
+  
+		  <!-- Item -->
+		  <div class="flex gap-x-5 ms-1">
+			<!-- Icon -->
+			<div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800 dark:after:bg-white">
+			  <div class="relative z-10 size-8 flex justify-center items-center">
+				<span class="flex flex-shrink-0 justify-center items-center size-9 border border-neutral-800 dark:border-white font-semibold text-s uppercase rounded-full">
+				  1
+				</span>
+			  </div>
+			</div>
+			<!-- End Icon -->
+  
+			<!-- Right Content -->
+			<div class="grow pt-0.5 pb-8 ">
+			  <p class="lg:text-lg mt-0">
+				<span class="font-bold">Discovery:</span>
+				Together, we determine what your site should do and how it connects to your vision.
+			  </p>
+  
+			</div>
+		 
+		  </div>
+		
+		  <div class="flex gap-x-5 ms-1">
+	  
+			<div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800 dark:after:bg-white">
+			  <div class="relative z-10 size-8 flex justify-center items-center">
+				<span class="flex flex-shrink-0 justify-center items-center size-9 border border-neutral-800 dark:border-white font-semibold text-s uppercase rounded-full">
+				  2
+				</span>
+			  </div>
+			</div>
+  
+			<div class="grow pt-0.5 pb-8 sm:pb-12">
+			  <p class="lg:text-lg mt-0">
+				<span class="font-bold">Creative and UI:</span>
+				We put together some wireframes, then we design the visuals for your new website.
+			  </p>
+			</div>
+		   
+		  </div>
+	  
+		  <div class="flex gap-x-5 ms-1">
+		  
+			<div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800 dark:after:bg-white">
+			  <div class="relative z-10 size-8 flex justify-center items-center">
+				<span class="flex flex-shrink-0 justify-center items-center size-9 border border-neutral-800 dark:border-white font-semibold text-s uppercase rounded-full">
+				  3
+				</span>
+			  </div>
+			</div>
+		  
+			<div class="grow pt-0.5 pb-8 sm:pb-12">
+			  <p class="lg:text-lg mt-0">
+				<span class="font-bold">Development:</span>
+				During this stage is where I am in my element. I create the code needed to make your website work. This includes vigorous testing for speed and mobile devices.
+			  </p>
+			</div>
+		   
+		  </div>
+	   
+		  <div class="flex gap-x-5 ms-1">
+		
+			<div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+			  <div class="relative z-10 size-8 flex justify-center items-center">
+				<span class="flex flex-shrink-0 justify-center items-center size-9 border border-neutral-800 dark:border-white font-semibold text-s uppercase rounded-full">
+				  4
+				</span>
+			  </div>
+			</div>
+		 
+  
 			
-			<p>
-				Looking for more templates? Maybe you need a finished, polished blog template you can use to get your site going within a few minutes? Check out <a
-					href="https://sureshkhirwadkar.dev"
-					>my other work
-				</a> on my dev website.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+			<div class="grow pt-0.5 pb-8 sm:pb-12">
+			  <p class="lg:text-lg mt-0">
+				<span class="font-bold">Launch</span>
+				I run a set of final checks, offer client training if needed, bug tracking, DNS switching and then finally hand the website over to you.
+			  </p>
+			</div>
+		   
+		  </div>
+	
+  
+		  
+  
+		  <Button aria="Start your project" href="/contact">Start your project</Button>
+		</div>
+	 
+	  </div>
+  
+	</div>
+  </div>
+  
+	  <div class=" px-4 xl:px-0   mx-auto">
+  
+		<div class=" mb-10 lg:mb-14">
+		  <h2 class="text-2xl md:text-4xl">Recent Projects</h2>
+		  <p>Take a look at some of the most recent <a href="/projects">projects</a> I have worked on.</p>
+		  <p>If you are interested in some of my open source work, mini JavaScript projects or anything else in between, take a look at my GitHub account as I push code often.</p>
+			<p>I design and develop everything from scratch. That means I like to get messy with code and develop websites that are lean and work effortlessly.</p>
+  
+		</div>
+   
+	
+	  
+	  </div>
+  
+  
+	</div>	
+</BaseLayout>

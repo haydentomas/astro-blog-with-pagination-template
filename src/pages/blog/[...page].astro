@@ -49,8 +49,13 @@ type PostItem = {
     };
     slug: string;
 };
+
+const title = 'Blog - Hayden Tomas - Website Developer';
+const description = 'I develop websites and web applications using modern technologies like React, Next.js, and Astro.';
+const permalink = `${Astro.url.href}`;
 ---
-<BaseLayout>
+<BaseLayout title={title} description={description} permalink={permalink}>
+
     <main>
 
         <div class="max-w-md mx-auto">
@@ -76,5 +81,4 @@ type PostItem = {
             </div>
         </div>
     </main>
-    
 </BaseLayout>

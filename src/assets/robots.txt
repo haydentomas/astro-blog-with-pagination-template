@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+Sitemap: https://haydentomas.co.uk/sitemap-index.xml

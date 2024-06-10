@@ -2,9 +2,24 @@
 import BaseLayout from "./BaseLayout.astro";
 import { Picture } from "astro:assets";
 const { frontmatter } = Astro.props;
+export interface Props {
+  title: string;
+  description: string;
+  permalink: string;
+  current?: string;
+  frontmatter: { // Add this section
+        title: string;
+        description: string;
+        pubDate: Date;
+        author: string;
+        image: string;
+        imageAlt: string;
+    };
+}
+const { title, description, permalink, current } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} permalink={permalink}>
   <main class="p-4">
 
     <h1 class="">{frontmatter.title}</h1>

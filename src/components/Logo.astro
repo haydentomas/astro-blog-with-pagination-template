@@ -1,0 +1,24 @@
+---
+// import the Image component and the image
+import { Image } from 'astro:assets';
+import mylogo from '../assets/logo-white.png';
+---
+
+<style>
+  img {
+    display: block;
+  }
+
+ 
+
+
+</style>
+
+<a aria-label="Go back to the home page" href="/">
+  <Image loading="lazy" src={mylogo}
+  widths={[240, 540, 720, mylogo.width]}
+  sizes={`(max-width: 360px) 100px, (max-width: 720px) 100px, (max-width: 1600px) 100px, ${mylogo.width}px`}
+  alt="Hayden Tomas - Accessible and secure website development."
+/>
+  
+</a>

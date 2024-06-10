@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+const title = 'Projects';
+const description = 'Latest projects.';
+const permalink = `${Astro.site.href}projects`;
+
+
+let allPosts = await Astro.glob('../../content/project-posts/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="projects">
+
+  <h1 class="sm:text-7xl">Projects</h1>
+    <div class="not-prose grid gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+      {allPosts.map((post, index) => {
+        const href = `/projects/${post.file.split('/').pop().split('.').shift()}`;
+        const thumbnail = post.frontmatter.thumbnail;
+        const icons = post.frontmatter.icons || []; 
+        return (
+          <div class="relative shadow-md p-5 bg-zinc-900 rounded-md">
+            <a href={href} class="block overflow-hidden group rounded-xl">
+              {thumbnail && (
+               <Image
+  src={thumbnail}
+  alt={post.frontmatter.title + " Thumbnail"}
+  class="w-full h-48 object-cover"
+  width={384}
+  height={192}
+/>
+
+              )}
+            </a>
+         
+            <div class="relative mt-5">
+             
+              <h2 class="text-white text-2xl font-bold transition-colors duration-200">
+                <a class="text-white hover:text-white" href={href}>{post.frontmatter.title}</a>
+              </h2>
+            
+              <p class="mb-4 text-white">{post.frontmatter.description}</p>
+              <a href={href} class="text-white hover:text-white font-medium underline">Read More</a>
+            </div>
+            {icons.length > 0 && ( 
+        <ul class="flex absolute top-0  mt-0   pl-2 pr-5 right-0 gap-3 opacity-1 bg-slate-900 opacity-1"> {}
+          {icons.map((icon, iconIndex) => (
+            <li>
+              <img
+                src={`/icons/${icon}.svg`}
+                alt={post.frontmatter.title + " Icon " + (iconIndex + 1)}
+                class="h-5 w-5 iconset ml-3 object-cover"
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+})}
+      </div>
+  
+</BaseLayout>
+
+
+<style>
+  h2,
+  .post-item-footer {
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+  }
+
+  .post-item-date {
+    color: var(--text-secondary);
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 16px;
+  }
+
+  hr {
+    margin: 60px auto;
+  }
+</style>

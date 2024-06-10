@@ -1,24 +1,149 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
-import SocialIcons from './SocialIcons.astro';
+import Logo from './Logo.astro'
+import Nav from './Nav.astro';
+import Button from './Button.astro';
+const { current = '' } = Astro.props;
 ---
 
-<header>
+
+<style>
+	nav {
+	  align-items: center;
+	  display: flex;
+	  flex: 1;
+	  font-family: var(--font-family-sans);
+	  font-weight: 700;
+	  justify-content: flex-end;
+	  text-transform: uppercase;
+	}
+  
+	a {
+	  color: inherit;
+	  text-decoration: none;
+	  padding: 10px 5px;
+	  display: block;
+	  position: relative;
+  
+	  min-width: 70px;
+	  text-align: center;
+  
+	  
+	  
+	}
+  
+	a:not(.selected) {
+	  opacity: 0.8;
+	}
+  
+   
+  
+	a:hover::before,
+	.selected::before {
+	  transform: scaleX(1);
+	}
+  
+	.selected::before {
+	  background: var(--primary-color);
+	}
+  
+	.theme-toggle-container {
+	  width: 75px;
+	}
+  
+	@media (max-width: 768px) {
+	  .theme-toggle-container {
+	  width: 75px;
+	  position: absolute;
+	  top:20px;
+	}
+	}
+  
+	nav a.button {
+	@apply rounded-3xl text-black px-5 bg-neutral-50 hover:bg-neutral-700 hover:text-white;
+  font-size:1em;
+  }
+	nav a.button::before {
+	display:none !important;}
+  
+	  nav a.button {
+		display: none;
+	  }
+	
+  
+  </style>
+  
+
+
+
+
+
+
+  <section class="">
+	<div class="container">
+		  <div class="flex flex-col flex-wrap items-center justify-between py-6 mx-auto md:flex-row">
+			<div class="relative flex flex-col md:flex-row">
+			  <Logo />
+			</div>
+	
+			<div class="inline-flex flex-col items-center sm:flex-row sm:ml-5 lg:justify-end">
+			  <Nav current={current} />
+			  <Button aria="Download CV" href="/Assets/Hayden-Tomas-CV.pdf" target="_blank">Download CV</Button>
+			</div>
+		</div>
+	</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href="/">{title}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/projects">Projects</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 			<HeaderLink href="/tags">Tags</HeaderLink>
 		</div>
 		<div class="social-links">
 			
-		<SocialIcons />
+		
 		</div>
 	</nav>
-</header>
+</header> -->
 <style>
 	header {
 		margin: 0;

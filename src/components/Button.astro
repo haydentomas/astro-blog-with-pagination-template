@@ -1,0 +1,13 @@
+
+---
+const { href } = Astro.props;
+const { aria } = Astro.props;
+const { target } = Astro.props;
+
+---
+
+<a aria-label={aria} href={href} target={target} class="button font-sans uppercase font-bold sm:w-auto w-full text-center   bg-indigo-900 hover:bg-purple-600 text-white hover:text-white text-lg px-6 py-2 inline-block rounded-full">
+    <slot />
+</a>
+
+

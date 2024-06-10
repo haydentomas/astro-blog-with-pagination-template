@@ -1,31 +1,86 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'About Hayden Tomas - Website Developer';
+const description = 'I develop websites and web applications using modern technologies like React, Next.js, and Astro.';
+const permalink = `${Astro.url.href}/about`;
+import Button from '../components/Button.astro';
+// Import the <Image /> component
+import { Image } from "astro:assets"
+// Import a reference to the image itself
+import topImage from '../assets/heronew.png'; 
+import otherImage from "../assets/settings.png"
+import cassetteImage from "../assets/cassette.png"
 ---
 
-<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-</head>
+<BaseLayout title={title} description={description} permalink={permalink} current="about">
 
-		<Header title={SITE_TITLE} />
-<main>
-
-<h1>About Me</h1>
-
-<p>Hi, my name is Suresh Khirwadkar and I'm a 39-year-old doctor with a passion for coding, web development, and technology. When I'm not working at the hospital, you can usually find me experimenting with new programming languages or building websites.</p>
-
-<p>I have pretty eclectic musical tastes and love listening to music while I work on my latest project. I'm particularly interested in artificial intelligence and staying on top of the latest tech trends and innovations.</p>
-
-<p>As a busy father of four kids, I know how precious free time is. I started creating websites and templates as a hobby that I could fit around my job and family commitments. My goal is to make professional-looking websites that anyone can build quickly and easily - no coding expertise required!</p>
-
-<p>Over the years, I got frustrated with the lack of good website templates and confusing, over-complicated templates that are impossible to customize. I wanted to make something better - templates that are designed for simplicity, ease of use, and modularity. My websites and templates are built with busy people like me in mind.</p>
-
-<p>I offer both free and premium website templates and components that anyone can use to build a professional site in just a few clicks. If you like my work, please consider <a href="https://buymeacoffee.com/sureshkhirwadkar">buying me a coffee</a> to help support my web development addiction!</p>
-
-<p>Thank you for stopping by my site. Feel free to look around at my project portfolio and available website templates. If you have any questions or comments, I'd love to hear from you!</p>
+	<main class="prose min-w-full">
+		<h1 class="sm:text-7xl">About Hayden Tomas</h1>
+	 
+	 <p>My name is Hayden Tomas, I am a front-end website developer based in Prestwood, Great Missenden.</p>
+	 <p>I have been creating websites professionally since 2011 although I began much sooner. Those of you old enough to remember software such as Microsoft Frontpage or the very first version of Serif Web Plus will understand the fun and games we had back then!</p>
+	 <p>I remember writing my very first program in basic, granted it was copied from the book that came with my beloved <a target="_blank" href="https://en.wikipedia.org/wiki/Commodore_Plus/4">Commodore Plus/4</a> but what would you expect a 9 year old to write!</p>
+	 <p>So anyway, fast forward to 2011, I got my first website development job, and I am still with that agency to this day.</p>
 	
-
-</main>
-<Footer />
+	 <div class="grid lg:grid-cols-2 lg:gap-28">
+	  <div class="column"> <h2>What I do</h2>
+		<p>I develop websites in WordPress and DNN mostly, however I am extremely interested in developing Jamstack websites. There is something about the speed in which you can build, the security and just how much Jamstack has advanced.</p>
+		<p>There is nothing you can't build. Static sites now can compete with dynamic websites built in CMS systems such as WordPress, you can even create E-commerce solutions with static site builders such as Astro and Gatsby.</p>
+		<h2>My Skills</h2>
+		<p>Now I do need to be honest about my skills. JavaScript is not my strong point, however I am learning!</p>
+		  
+		  <p>Part of the reason why I wanted to build my personal site in AstroJS is because it would force me to learn JavaScript.</p>
+	   </div>
+	  <div class="column">          <Image loading="eager" src={topImage}
+		widths={[240, 540, 720, topImage.width]}
+		sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${topImage.width}px`}
+		alt="Hayden Tomas = Front end website developer"
+	  /></div>
+  
+	 </div>
+	 <hr />
+	 <p>I have spent most of my time creating skins, themes and building sites from scratch. I am the guy you come to when you need a site take from a PSD file or from Figma and turned into a working theme. I am not the guy you come to when you need a piece of functionality built from scratch with a language like JavaScript or Python. Not yet anyway!</p>
+	 <h2>So not any particular order, this is my toolset:</h2>
+   
+  <div class="grid lg:grid-cols-2 lg:gap-28">
+	<div class="columns">
+	  <Image loading="eager" src={cassetteImage}
+	widths={[240, 540, 720, otherImage.width]}
+	sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${otherImage.width}px`}
+	alt="Hayden Tomas = Front end website developer" class=""/>
+	</div>
+  <div class="column"><ul>
+	<li><strong>HTML</strong> (obviously!)</li>
+	<li><strong>CSS and Sass</strong> (love that we now have native nesting!)</li>
+	<li><strong>Tailwind</strong> (learning this has been fantastic, I have spent alot less time writing sass)</li>
+	<li><strong>JavaScript</strong> (It's a work in progress!)</li>
+	<li><strong>WordPress</strong> (Love it, Hate it - I prefer to build classic themes with ACF and PineGrow over pagebuilders)</li>
+	<li><strong>DNN</strong> (DotNetNuke) - Spenty more than 10 years creating themes and skins. Recently discovered 2SXC which is frikking awesome. It's like advanced custom fields for DNN, sort of!</li>
+   </ul>
+   </div>
+  
+  
+  </div>
+  <hr>
+  <div class="grid lg:grid-cols-2 lg:gap-28">
+  
+  <div class="column"><h2>Other things to note:</h2>
+	<ul>
+	 <li><strong>I use Git</strong> to a novice level, enough to get my stuff online, I can push, pull, merge etc.</li>
+	 <li><strong>I am comfortable with the terminal</strong> on both Mac and PC.</li>
+	 <li><strong>I am comfortable working on servers</strong> and happy to get my hands dirty, even if I do not know what I am doing. <strong>Google is my friend!</strong></li>
+	 <li><strong>I am a course junkie</strong> and proud of it!</li>
+	</ul></div>
+	<div class="column">      <Image loading="eager" src={otherImage}
+	  widths={[240, 540, 720, otherImage.width]}
+	  sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${otherImage.width}px`}
+	  alt="Hayden Tomas = Front end website developer" class=""/></div>
+  
+  </div>
+  <div class="mb-10 not-prose"><p>If you are interested in working with me or hiring me, get in touch! I am reachable through the contact form and will answer you within a day.</p>
+  <Button aria="Contact me" href="/contact">Contact me</Button></div>
+  
+  
+	</main>
+  <!-- End Icon Blocks -->
+  </BaseLayout>
