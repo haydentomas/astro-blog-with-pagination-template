@@ -58,15 +58,17 @@ const permalink = `${Astro.url.href}`;
 
     <main>
 
-        <div class="max-w-md mx-auto">
+        <div class="max-w-full mx-auto">
             {page.data.map(({ data, slug }) => (
-                <a href={`/posts/${slug}`} class="block text-black no-underline">
-                    <div class="bg-gray-200 rounded-lg border border-gray-300 p-4 my-2">
-                        <h3 class="text-xl font-bold">{data.title}</h3>
-                        <p>{data.description}</p>
-                        <div class="flex justify-center items-center h-full">
-                            <Picture formats={['avif', 'webp']} src={data.image} alt={data.imageAlt} height="200" width="300" class="m-auto"/>
+                <a href={`/posts/${slug}`} class="block text-black no-underline mb-5">
+                    <div class="rounded-lg border border-gray-300 p-4 my-2 grid grid-cols-12 justify-center items-center">
+                         <div class=" col-span-3">
+                            <Picture formats={['avif', 'webp']} src={data.image} alt={data.imageAlt} height="200" width="300" class="ml-0 rounded-md"/>
                         </div>
+                      <div class="col-span-9"> 
+                        <h3 class="text-2xl text-white font-bold">{data.title}</h3>
+                        <p class="text-white">{data.description}</p></div>
+                       
                     </div>
                 </a>
             ))}
