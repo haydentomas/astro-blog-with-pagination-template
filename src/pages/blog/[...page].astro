@@ -46,6 +46,7 @@ type PostItem = {
         description: string;
         image: string;
         imageAlt: string;
+        pubDate: string;
     };
     slug: string;
 };
@@ -55,28 +56,32 @@ const description = 'I develop websites and web applications using modern techno
 const permalink = `${Astro.url.href}`;
 ---
 <BaseLayout title={title} description={description} permalink={permalink}>
-
     <main>
-
         <div class="max-w-full mx-auto">
-            {page.data.map(({ data, slug }) => (
-                <a href={`/posts/${slug}`} class="block text-black no-underline mb-5">
-                    <div class="rounded-lg border border-gray-300 p-4 my-2 grid grid-cols-12 justify-center items-center">
-                         <div class=" col-span-3">
-                            <Picture formats={['avif', 'webp']} src={data.image} alt={data.imageAlt} height="200" width="300" class="ml-0 rounded-md"/>
-                        </div>
-                      <div class="col-span-9"> 
-                        <h3 class="text-2xl text-white font-bold">{data.title}</h3>
-                        <p class="text-white">{data.description}</p></div>
-                       
-                    </div>
-                </a>
-            ))}
+            {page.data.map(({ data, slug }) => {
+                // Format the Date
+                const pubDate = new Date(data.pubDate);
+                const formattedDate = pubDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }); // Format as Mon Oct 30 2023
+
+                return (
+                    <a href={`/posts/${slug}`} class="block text-black no-underline mb-5">
+                        <div class="rounded-lg border border-gray-300 p-4 my-2 grid grid-cols-12 justify-center items-center">
+                            <div class=" col-span-3">
+                                <Picture formats={['avif', 'webp']} src={data.image} alt={data.imageAlt} height="200" width="300" class="ml-0 rounded-md" />
+                            </div>
+                            <div class="col-span-9">
+                                <p class="text-white text-xs font-sans font-bold">{formattedDate}</p>
+                                <h3 class="text-2xl text-white font-bold">{data.title}</h3>
+                                <p class="text-white">{data.description}</p>
+                            </div>
+                            </div>
+                    </a>
+                );
+            })}
         </div>
-    
+
         <div class="text-center">
             <p>Page {page.currentPage} of {page.lastPage}</p>
-    
             <div class="text-center">
                 {prev && <a href={prev} class="inline-block mr-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Previous Page</a>}
                 {next && <a href={next} class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Next Page</a>}
