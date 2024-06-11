@@ -316,3 +316,13 @@
   .bulletarrows {
   fill: #9333EA;
   }
+
+  code {
+	font-family: 'SF Mono', menlo, inconsolata, monospace;
+	font-size: calc(1em - 2px);
+	color: #27d25a;
+	padding: 0.2em 0.4em;
+	border-radius: 2px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  }

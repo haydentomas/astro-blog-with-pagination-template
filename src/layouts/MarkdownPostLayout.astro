@@ -20,17 +20,32 @@ const { title, description, permalink, current } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description} permalink={permalink}>
-  <main class="pt-4">
-
-    <h1 class="">{frontmatter.title}</h1>
-
-    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-    
+ 
 
 
-    <Picture formats={['avif', 'webp']} src={frontmatter.image} alt={frontmatter.imageAlt} width="1322" height="887" class=" rounded-lg ml-0 mr-0 mx-auto my-4" />
 
-    <slot />
 
-  </main>
+  <section class="relative">
+   
+        <div class="px-10 md:px-4 mx-auto mb-16">
+            <div class="mx-auto text-left md:text-center max-w-">
+        
+                <h1 class="mb-6 text-4xl lg:text-7xl font-bold">
+                   {frontmatter.title}
+                </h1>
+                <p class=" text-xl">{frontmatter.description} </p>
+                <div class="flex items-center md:justify-center">
+                  
+                  <p class="text-sm"> {frontmatter.pubDate.toString().slice(0,10)}</p>
+                </div>
+            </div>
+        </div>
+        <div class="relative" style="height:700px">
+            
+            <Picture formats={['avif', 'webp']} src={frontmatter.image} alt={frontmatter.imageAlt} width="1322" height="887" class="rounded-xl w-full h-full object-cover object-top" />
+            <slot />
+        </div>
+   
+  
+</section>
 </BaseLayout>
