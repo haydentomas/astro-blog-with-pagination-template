@@ -7,7 +7,7 @@ export interface Props {
   description: string;
   permalink: string;
   current?: string;
-  frontmatter: { // Add this section
+  frontmatter: { 
         title: string;
         description: string;
         pubDate: Date;
@@ -40,11 +40,11 @@ const { title, description, permalink, current } = Astro.props;
                 </div>
             </div>
         </div>
-        <div class="relative" style="height:700px">
+     
             
             <Picture formats={['avif', 'webp']} src={frontmatter.image} alt={frontmatter.imageAlt} width="1322" height="887" class="rounded-xl w-full h-full object-cover object-top" />
             <slot />
-        </div>
+     
    
   
 </section>
